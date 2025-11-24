@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>First Innings Score Predictor</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <style>
+            /* Base Styles */
+            body {
+                font-family: 'Open Sans', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f8f9fa;
+            }
+
+            .container {
+                text-align: center;
+                padding: 20px;
+            }
+
+            .container-heading {
+                font-size: 2em;
+                font-weight: bold;
+                color: #333;
+            }
+
+            .heading_first {
+                color: #007bff;
+            }
+
+            .heading_second {
+                color: #28a745;
+            }
+
+            .description {
+                margin-top: 10px;
+            }
+
+            .description p {
+                font-size: 1.2em;
+                color: #555;
+            }
+
+            /* Prediction Area */
+            .prediction-area {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .ipl-banner-left,
+            .ipl-banner-right {
+                width: 20%;
+            }
+
+            .slider-frame {
+                overflow: hidden;
+                height: 400px;
+            }
+
+            .slide-images-up,
+            .slide-images-down {
+                animation: slide 10s infinite;
+            }
+
+            .image-container {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .image-width {
+                width: 100%;
+                height: auto;
+            }
+
+            @keyframes slide {
+                0%, 100% { transform: translateY(0%); }
+                25% { transform: translateY(-100%); }
+                50% { transform: translateY(-200%); }
+                75% { transform: translateY(-300%); }
+            }
+
+            .div2 {
+                width: 40%;
+                padding: 20px;
+                background-color: #ffffff;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Form Styles */
+            .form-input {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            .align-center {
+                text-align: center;
+            }
+
+            .myButton {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 10px 0;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .myButton:hover {
+                background-color: #0056b3;
+            }
+
+            /* Footer Styles */
+            .footer {
+                background-color: #343a40;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .contact {
+                margin-bottom: 10px;
+            }
+
+            .contact-icon {
+                margin: 0 10px;
+                color: white;
+                transition: color 0.3s ease;
+            }
+
+            .contact-icon:hover {
+                color: #007bff;
+            }
+
+            .footer-description {
+                margin: 0;
+            }
+
+            /* Responsive Styles */
+            @media (max-width: 768px) {
+                .prediction-area {
+                    flex-direction: column;
+                }
+
+                .ipl-banner-left,
+                .ipl-banner-right,
+                .div2 {
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Website Title -->
+        <div class="container">
+            <h2 class='container-heading'><span class='heading_first'>First Innings Score Predictor for </span><span class="heading_second">Indian Premier League (IPL)</span></h2>
+            <div class='description'>
+                <p>A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
+            </div>
+        </div>
+
+        <!-- Prediction Area -->
+        <div class="prediction-area">
+
+            <!-- IPL Banner - 1 -->
+            <div class='ipl-banner-left'>
+
+                <div class="slider-frame">
+                    <div class="slide-images-up">
+
+                        <!-- Image-1 -->
+                        <div class="image-container">
+                            <img class="image-width" src="mi.jpg" alt="Mumbai Indians">
+                        </div>
+                        <!-- Image-2 -->
+                        <div class="image-container">
+                            <img class="image-width" src="srh.png" alt="Sunrisers Hyderabad">
+                        </div>
+                        <!-- Image-3 -->
+                        <div class="image-container">
+                            <img class="image-width" src="rcb.png" alt="Royal Challengers Bangalore">
+                        </div>
+                        <!-- Image-4 -->
+                        <div class="image-container">
+                            <img class="image-width" src="dc.png" alt="Delhi Capitals">
+                        </div>
+                        <!-- Image-5 -->
+                        <div class="image-container">
+                            <img class="image-width" src="rr.png" alt="Rajasthan Royals">
+                        </div>
+                        <!-- Image-6 -->
+                        <div class="image-container">
+                            <img class="image-width" src="kkr.jpg" alt="Kolkata Knight Riders">
+                        </div>
+                        <!-- Image-7 -->
+                        <div class="image-container">
+                            <img class="image-width" src="kxip.png" alt="Kings XI Punjab">
+                        </div>
+                        <!-- Image-8 -->
+                        <div class="image-container">
+                            <img class="image-width" src="csk.png" alt="Chennai Super Kings">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Prediction Form -->
+            <div class='div2'>
+                <form action="{{ url_for('predict') }}" method="POST">
+                    <!-- Batting Team Dropdown -->
+                    <select class="form-input align-center" name="batting-team">
+                        <option value="none">--- Select a Batting team ---</option>
+                        <option value="Mumbai Indians">Mumbai Indians</option>
+                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                        <option value="Chennai Super Kings">Chennai Super Kings</option>
+                        <option value="Rajasthan Royals">Rajasthan Royals</option>
+                        <option value="Kings XI Punjab">Kings XI Punjab</option>
+                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                        <option value="Delhi Daredevils">Delhi Daredevils</option>
+                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                    </select><br>
+                    <!-- Bowling Team Dropdown -->
+                    <select class="form-input align-center" name="bowling-team">
+                        <option value="none">--- Select a Bowling team ---</option>
+                        <option value="Mumbai Indians">Mumbai Indians</option>
+                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                        <option value="Chennai Super Kings">Chennai Super Kings</option>
+                        <option value="Rajasthan Royals">Rajasthan Royals</option>
+                        <option value="Kings XI Punjab">Kings XI Punjab</option>
+                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                        <option value="Delhi Daredevils">Delhi Daredevils</option>
+                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                    </select><br>
+                    <input class="form-input" type="text" name="overs" placeholder="Overs (>= 5.0) eg. 7.2"><br>
+                    <input class="form-input" type="text" name="runs" placeholder="Runs eg. 64"><br>
+                    <input class="form-input" type="text" name="wickets" placeholder="Wickets eg. 4"><br>
+                    <input class="form-input" type="text" name="runs_in_prev_5" placeholder="Runs scored in previous 5 Overs eg. 42"><br>
+                    <input class="form-input" type="text" name="wickets_in_prev_5" placeholder="Wickets taken in previous 5 Overs eg. 3"><br>
+
+                    <input type="submit" class="myButton" value="Predict Score">
+                </form>
+            </div>
+
+            <!-- IPL Banner - 2 -->
+            <div class='ipl-banner-right'>
+
+                <div class="slider-frame">
+                    <div class="slide-images-down">
+
+                        <!-- Image-1 -->
+                        <div class="image-container">
+                            <img class="image-width" src="mi.jpg" alt="Mumbai Indians">
+                        </div>
+                        <!-- Image-2 -->
+                        <div class="image-container">
+                            <img class="image-width" src="srh.png" alt="Sunrisers Hyderabad">
+                        </div>
+                        <!-- Image-3 -->
+                        <div class="image-container">
+                            <img class="image-width" src="rcb.png" alt="Royal Challengers Bangalore">
+                        </div>
+                        <!-- Image-4 -->
+                        <div class="image-container">
+                            <img class="image-width" src="dc.png" alt="Delhi Capitals">
+                        </div>
+                        <!-- Image-5 -->
+                        <div class="image-container">
+                            <img class="image-width" src="kkr.jpg" alt="Kolkata Knight Riders">
+                        </div>
+                        <!-- Image-6 -->
+                        <div class="image-container">
+                            <img class="image-width" src="rr.png" alt="Rajasthan Royals">
+                        </div>
+                        <!-- Image-7 -->
+                        <div class="image-container">
+                            <img class="image-width" src="kxip.png" alt="Kings XI Punjab">
+                        </div>
+                        <!-- Image-8 -->
+                        <div class="image-container">
+                            <img class="image-width" src="csk.png" alt="Chennai Super Kings">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class='footer'>
+            <div class="contact">
+                <!--<a target="_blank" href="https://github.com/anujvyas/IPL-First-Innings-Score-Prediction-Deployment"><i class="fab fa-github fa-lg contact-icon"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/anujkvyas"><i class="fab fa-linkedin fa-lg contact-icon"></i></a> -->
+            
+            </div>
+            <p class='footer-description'>Made with ❤️ by CHINNI.</p>
+        </div>
+
+    </body>
+</html>
